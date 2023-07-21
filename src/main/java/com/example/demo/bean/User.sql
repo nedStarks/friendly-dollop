@@ -1,0 +1,8 @@
+-- auto Generated on 2023-02-24
+-- DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`(
+	user_id INT (11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+	user_name VARCHAR (50) NOT NULL DEFAULT '' COMMENT '姓名',
+	user_age INT (11) NOT NULL DEFAULT -1 COMMENT '年龄',
+	PRIMARY KEY (user_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT 'user';

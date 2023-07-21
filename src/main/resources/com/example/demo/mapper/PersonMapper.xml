@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.PersonMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.bean.Person">
+    <!--@mbg.generated-->
+    <!--@Table person-->
+    <id column="person_id" jdbcType="INTEGER" property="personId" />
+    <result column="person_name" jdbcType="VARCHAR" property="personName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    person_id, person_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from person
+    where person_id = #{personId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from person
+    where person_id = #{personId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="person_id" keyProperty="personId" parameterType="com.example.demo.bean.Person" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into person (person_name)
+    values (#{personName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="person_id" keyProperty="personId" parameterType="com.example.demo.bean.Person" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into person
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="personName != null">
+        person_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="personName != null">
+        #{personName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.bean.Person">
+    <!--@mbg.generated-->
+    update person
+    <set>
+      <if test="personName != null">
+        person_name = #{personName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where person_id = #{personId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.bean.Person">
+    <!--@mbg.generated-->
+    update person
+    set person_name = #{personName,jdbcType=VARCHAR}
+    where person_id = #{personId,jdbcType=INTEGER}
+  </update>
+</mapper>
